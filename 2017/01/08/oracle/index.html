@@ -84,28 +84,16 @@
 
 
 
-<meta name="description" content="### 安装oracle 11g遇到的问题：
-#### 1. 安装orcale11g 出现[INS-07009] 无法加载 BeanStore,
-#### 将用于配置jdk的环境变量classpath改为class_path,或者直接删除。
-#### 2. 安装完成后使用b/s端登陆，使用普通的scott账号，显示应用程序要求的数据库权限超出了您当前具有的权限，
-#### 使用oracle的sql">
+<meta name="description" content="安装oracle 11g遇到的问题：1. 安装orcale11g 出现[INS-07009] 无法加载 BeanStore.将用于配置jdk的环境变量classpath改为class_path,或者直接删除。2. 安装完成后使用b/s端登陆，使用普通的scott账号，显示应用程序要求的数据库权限超出了您当前具有的权限，使用oracle的sqlplus工具使用管理员帐号登录请输入用户名：as sys">
 <meta property="og:type" content="article">
 <meta property="og:title" content="oracle">
 <meta property="og:url" content="http://yoursite.com/2017/01/08/oracle/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="### 安装oracle 11g遇到的问题：
-#### 1. 安装orcale11g 出现[INS-07009] 无法加载 BeanStore,
-#### 将用于配置jdk的环境变量classpath改为class_path,或者直接删除。
-#### 2. 安装完成后使用b/s端登陆，使用普通的scott账号，显示应用程序要求的数据库权限超出了您当前具有的权限，
-#### 使用oracle的sql">
-<meta property="og:updated_time" content="2017-01-08T08:29:32.244Z">
+<meta property="og:description" content="安装oracle 11g遇到的问题：1. 安装orcale11g 出现[INS-07009] 无法加载 BeanStore.将用于配置jdk的环境变量classpath改为class_path,或者直接删除。2. 安装完成后使用b/s端登陆，使用普通的scott账号，显示应用程序要求的数据库权限超出了您当前具有的权限，使用oracle的sqlplus工具使用管理员帐号登录请输入用户名：as sys">
+<meta property="og:updated_time" content="2017-01-08T08:31:40.530Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="oracle">
-<meta name="twitter:description" content="### 安装oracle 11g遇到的问题：
-#### 1. 安装orcale11g 出现[INS-07009] 无法加载 BeanStore,
-#### 将用于配置jdk的环境变量classpath改为class_path,或者直接删除。
-#### 2. 安装完成后使用b/s端登陆，使用普通的scott账号，显示应用程序要求的数据库权限超出了您当前具有的权限，
-#### 使用oracle的sql">
+<meta name="twitter:description" content="安装oracle 11g遇到的问题：1. 安装orcale11g 出现[INS-07009] 无法加载 BeanStore.将用于配置jdk的环境变量classpath改为class_path,或者直接删除。2. 安装完成后使用b/s端登陆，使用普通的scott账号，显示应用程序要求的数据库权限超出了您当前具有的权限，使用oracle的sqlplus工具使用管理员帐号登录请输入用户名：as sys">
 
 
 
@@ -327,25 +315,7 @@
       
 
       
-        <pre><code>### 安装oracle 11g遇到的问题：
-#### 1. 安装orcale11g 出现[INS-07009] 无法加载 BeanStore,
-#### 将用于配置jdk的环境变量classpath改为class_path,或者直接删除。
-#### 2. 安装完成后使用b/s端登陆，使用普通的scott账号，显示应用程序要求的数据库权限超出了您当前具有的权限，
-#### 使用oracle的sqlplus工具使用管理员帐号登录
-##### 请输入用户名：as sysdba
-##### 请输入用户名：sys
-##### 输入口令：（输入你安装时设定的口令）    
-##### grant SELECT_CATALOG_ROLE to user（scott），即可正常登陆。
-
-#### PS:修改密码命令：
-##### alter user scott account unlock;
-##### alter user scott identified by abc123;
-
-#### 查看账户    
-##### 1、查看当前用户拥有的角色权限信息：select * from role_sys_privs;
-##### 2、查看当前用户的详细信息：select * from user_users;
-##### 3、查看当前用户的角色信息：select * from user_role_privs;
-</code></pre>
+        <h3 id="安装oracle-11g遇到的问题："><a href="#安装oracle-11g遇到的问题：" class="headerlink" title="安装oracle 11g遇到的问题："></a>安装oracle 11g遇到的问题：</h3><h4 id="1-安装orcale11g-出现-INS-07009-无法加载-BeanStore"><a href="#1-安装orcale11g-出现-INS-07009-无法加载-BeanStore" class="headerlink" title="1. 安装orcale11g 出现[INS-07009] 无法加载 BeanStore."></a>1. 安装orcale11g 出现[INS-07009] 无法加载 BeanStore.</h4><h4 id="将用于配置jdk的环境变量classpath改为class-path-或者直接删除。"><a href="#将用于配置jdk的环境变量classpath改为class-path-或者直接删除。" class="headerlink" title="将用于配置jdk的环境变量classpath改为class_path,或者直接删除。"></a>将用于配置jdk的环境变量classpath改为class_path,或者直接删除。</h4><h4 id="2-安装完成后使用b-s端登陆，使用普通的scott账号，显示应用程序要求的数据库权限超出了您当前具有的权限，"><a href="#2-安装完成后使用b-s端登陆，使用普通的scott账号，显示应用程序要求的数据库权限超出了您当前具有的权限，" class="headerlink" title="2. 安装完成后使用b/s端登陆，使用普通的scott账号，显示应用程序要求的数据库权限超出了您当前具有的权限，"></a>2. 安装完成后使用b/s端登陆，使用普通的scott账号，显示应用程序要求的数据库权限超出了您当前具有的权限，</h4><h4 id="使用oracle的sqlplus工具使用管理员帐号登录"><a href="#使用oracle的sqlplus工具使用管理员帐号登录" class="headerlink" title="使用oracle的sqlplus工具使用管理员帐号登录"></a>使用oracle的sqlplus工具使用管理员帐号登录</h4><h5 id="请输入用户名：as-sysdba"><a href="#请输入用户名：as-sysdba" class="headerlink" title="请输入用户名：as sysdba"></a>请输入用户名：as sysdba</h5><h5 id="请输入用户名：sys"><a href="#请输入用户名：sys" class="headerlink" title="请输入用户名：sys"></a>请输入用户名：sys</h5><h5 id="输入口令：（输入你安装时设定的口令）"><a href="#输入口令：（输入你安装时设定的口令）" class="headerlink" title="输入口令：（输入你安装时设定的口令）"></a>输入口令：（输入你安装时设定的口令）</h5><h5 id="grant-SELECT-CATALOG-ROLE-to-user（scott），即可正常登陆。"><a href="#grant-SELECT-CATALOG-ROLE-to-user（scott），即可正常登陆。" class="headerlink" title="grant SELECT_CATALOG_ROLE to user（scott），即可正常登陆。"></a>grant SELECT_CATALOG_ROLE to user（scott），即可正常登陆。</h5><h4 id="PS-修改密码命令："><a href="#PS-修改密码命令：" class="headerlink" title="PS:修改密码命令："></a>PS:修改密码命令：</h4><h5 id="alter-user-scott-account-unlock"><a href="#alter-user-scott-account-unlock" class="headerlink" title="alter user scott account unlock;"></a>alter user scott account unlock;</h5><h5 id="alter-user-scott-identified-by-abc123"><a href="#alter-user-scott-identified-by-abc123" class="headerlink" title="alter user scott identified by abc123;"></a>alter user scott identified by abc123;</h5><h4 id="查看账户"><a href="#查看账户" class="headerlink" title="查看账户"></a>查看账户</h4><h5 id="1、查看当前用户拥有的角色权限信息：select-from-role-sys-privs"><a href="#1、查看当前用户拥有的角色权限信息：select-from-role-sys-privs" class="headerlink" title="1、查看当前用户拥有的角色权限信息：select * from role_sys_privs;"></a>1、查看当前用户拥有的角色权限信息：select * from role_sys_privs;</h5><h5 id="2、查看当前用户的详细信息：select-from-user-users"><a href="#2、查看当前用户的详细信息：select-from-user-users" class="headerlink" title="2、查看当前用户的详细信息：select * from user_users;"></a>2、查看当前用户的详细信息：select * from user_users;</h5><h5 id="3、查看当前用户的角色信息：select-from-user-role-privs"><a href="#3、查看当前用户的角色信息：select-from-user-role-privs" class="headerlink" title="3、查看当前用户的角色信息：select * from user_role_privs;"></a>3、查看当前用户的角色信息：select * from user_role_privs;</h5>
       
     </div>
 
@@ -426,8 +396,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -469,6 +448,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装oracle-11g遇到的问题："><span class="nav-number">1.</span> <span class="nav-text">安装oracle 11g遇到的问题：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-安装orcale11g-出现-INS-07009-无法加载-BeanStore"><span class="nav-number">1.1.</span> <span class="nav-text">1. 安装orcale11g 出现[INS-07009] 无法加载 BeanStore.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将用于配置jdk的环境变量classpath改为class-path-或者直接删除。"><span class="nav-number">1.2.</span> <span class="nav-text">将用于配置jdk的环境变量classpath改为class_path,或者直接删除。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-安装完成后使用b-s端登陆，使用普通的scott账号，显示应用程序要求的数据库权限超出了您当前具有的权限，"><span class="nav-number">1.3.</span> <span class="nav-text">2. 安装完成后使用b/s端登陆，使用普通的scott账号，显示应用程序要求的数据库权限超出了您当前具有的权限，</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用oracle的sqlplus工具使用管理员帐号登录"><span class="nav-number">1.4.</span> <span class="nav-text">使用oracle的sqlplus工具使用管理员帐号登录</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#请输入用户名：as-sysdba"><span class="nav-number">1.4.1.</span> <span class="nav-text">请输入用户名：as sysdba</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#请输入用户名：sys"><span class="nav-number">1.4.2.</span> <span class="nav-text">请输入用户名：sys</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#输入口令：（输入你安装时设定的口令）"><span class="nav-number">1.4.3.</span> <span class="nav-text">输入口令：（输入你安装时设定的口令）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#grant-SELECT-CATALOG-ROLE-to-user（scott），即可正常登陆。"><span class="nav-number">1.4.4.</span> <span class="nav-text">grant SELECT_CATALOG_ROLE to user（scott），即可正常登陆。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PS-修改密码命令："><span class="nav-number">1.5.</span> <span class="nav-text">PS:修改密码命令：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#alter-user-scott-account-unlock"><span class="nav-number">1.5.1.</span> <span class="nav-text">alter user scott account unlock;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#alter-user-scott-identified-by-abc123"><span class="nav-number">1.5.2.</span> <span class="nav-text">alter user scott identified by abc123;</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看账户"><span class="nav-number">1.6.</span> <span class="nav-text">查看账户</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、查看当前用户拥有的角色权限信息：select-from-role-sys-privs"><span class="nav-number">1.6.1.</span> <span class="nav-text">1、查看当前用户拥有的角色权限信息：select * from role_sys_privs;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、查看当前用户的详细信息：select-from-user-users"><span class="nav-number">1.6.2.</span> <span class="nav-text">2、查看当前用户的详细信息：select * from user_users;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、查看当前用户的角色信息：select-from-user-role-privs"><span class="nav-number">1.6.3.</span> <span class="nav-text">3、查看当前用户的角色信息：select * from user_role_privs;</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
