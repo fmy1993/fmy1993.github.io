@@ -84,25 +84,28 @@
 
 
 
-<meta name="description" content="安装oracle 11g遇到的问题：#### 1. 安装orcale11g 出现[INS-07009] 无法加载 BeanStore,
+<meta name="description" content="### 安装oracle 11g遇到的问题：
+#### 1. 安装orcale11g 出现[INS-07009] 无法加载 BeanStore,
 #### 将用于配置jdk的环境变量classpath改为class_path,或者直接删除。
 #### 2. 安装完成后使用b/s端登陆，使用普通的scott账号，显示应用程序要求的数据库权限超出了您当前具有的权限，
-#### 使用oracle的sqlplus工">
+#### 使用oracle的sql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="oracle">
 <meta property="og:url" content="http://yoursite.com/2017/01/08/oracle/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="安装oracle 11g遇到的问题：#### 1. 安装orcale11g 出现[INS-07009] 无法加载 BeanStore,
+<meta property="og:description" content="### 安装oracle 11g遇到的问题：
+#### 1. 安装orcale11g 出现[INS-07009] 无法加载 BeanStore,
 #### 将用于配置jdk的环境变量classpath改为class_path,或者直接删除。
 #### 2. 安装完成后使用b/s端登陆，使用普通的scott账号，显示应用程序要求的数据库权限超出了您当前具有的权限，
-#### 使用oracle的sqlplus工">
-<meta property="og:updated_time" content="2017-01-08T08:25:21.534Z">
+#### 使用oracle的sql">
+<meta property="og:updated_time" content="2017-01-08T08:29:32.244Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="oracle">
-<meta name="twitter:description" content="安装oracle 11g遇到的问题：#### 1. 安装orcale11g 出现[INS-07009] 无法加载 BeanStore,
+<meta name="twitter:description" content="### 安装oracle 11g遇到的问题：
+#### 1. 安装orcale11g 出现[INS-07009] 无法加载 BeanStore,
 #### 将用于配置jdk的环境变量classpath改为class_path,或者直接删除。
 #### 2. 安装完成后使用b/s端登陆，使用普通的scott账号，显示应用程序要求的数据库权限超出了您当前具有的权限，
-#### 使用oracle的sqlplus工">
+#### 使用oracle的sql">
 
 
 
@@ -324,7 +327,8 @@
       
 
       
-        <h3 id="安装oracle-11g遇到的问题："><a href="#安装oracle-11g遇到的问题：" class="headerlink" title="安装oracle 11g遇到的问题："></a>安装oracle 11g遇到的问题：</h3><pre><code>#### 1. 安装orcale11g 出现[INS-07009] 无法加载 BeanStore,
+        <pre><code>### 安装oracle 11g遇到的问题：
+#### 1. 安装orcale11g 出现[INS-07009] 无法加载 BeanStore,
 #### 将用于配置jdk的环境变量classpath改为class_path,或者直接删除。
 #### 2. 安装完成后使用b/s端登陆，使用普通的scott账号，显示应用程序要求的数据库权限超出了您当前具有的权限，
 #### 使用oracle的sqlplus工具使用管理员帐号登录
@@ -332,9 +336,13 @@
 ##### 请输入用户名：sys
 ##### 输入口令：（输入你安装时设定的口令）    
 ##### grant SELECT_CATALOG_ROLE to user（scott），即可正常登陆。
-</code></pre><h4 id="PS-修改密码命令："><a href="#PS-修改密码命令：" class="headerlink" title="PS:修改密码命令："></a>PS:修改密码命令：</h4><pre><code>##### alter user scott account unlock;
+
+#### PS:修改密码命令：
+##### alter user scott account unlock;
 ##### alter user scott identified by abc123;
-</code></pre><h4 id="查看账户"><a href="#查看账户" class="headerlink" title="查看账户"></a>查看账户</h4><pre><code>##### 1、查看当前用户拥有的角色权限信息：select * from role_sys_privs;
+
+#### 查看账户    
+##### 1、查看当前用户拥有的角色权限信息：select * from role_sys_privs;
 ##### 2、查看当前用户的详细信息：select * from user_users;
 ##### 3、查看当前用户的角色信息：select * from user_role_privs;
 </code></pre>
@@ -418,17 +426,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -470,22 +469,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装oracle-11g遇到的问题："><span class="nav-number">1.</span> <span class="nav-text">安装oracle 11g遇到的问题：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PS-修改密码命令："><span class="nav-number">1.1.</span> <span class="nav-text">PS:修改密码命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看账户"><span class="nav-number">1.2.</span> <span class="nav-text">查看账户</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>

@@ -321,7 +321,8 @@
       
         
           
-            <h3 id="安装oracle-11g遇到的问题："><a href="#安装oracle-11g遇到的问题：" class="headerlink" title="安装oracle 11g遇到的问题："></a>安装oracle 11g遇到的问题：</h3><pre><code>#### 1. 安装orcale11g 出现[INS-07009] 无法加载 BeanStore,
+            <pre><code>### 安装oracle 11g遇到的问题：
+#### 1. 安装orcale11g 出现[INS-07009] 无法加载 BeanStore,
 #### 将用于配置jdk的环境变量classpath改为class_path,或者直接删除。
 #### 2. 安装完成后使用b/s端登陆，使用普通的scott账号，显示应用程序要求的数据库权限超出了您当前具有的权限，
 #### 使用oracle的sqlplus工具使用管理员帐号登录
@@ -329,9 +330,13 @@
 ##### 请输入用户名：sys
 ##### 输入口令：（输入你安装时设定的口令）    
 ##### grant SELECT_CATALOG_ROLE to user（scott），即可正常登陆。
-</code></pre><h4 id="PS-修改密码命令："><a href="#PS-修改密码命令：" class="headerlink" title="PS:修改密码命令："></a>PS:修改密码命令：</h4><pre><code>##### alter user scott account unlock;
+
+#### PS:修改密码命令：
+##### alter user scott account unlock;
 ##### alter user scott identified by abc123;
-</code></pre><h4 id="查看账户"><a href="#查看账户" class="headerlink" title="查看账户"></a>查看账户</h4><pre><code>##### 1、查看当前用户拥有的角色权限信息：select * from role_sys_privs;
+
+#### 查看账户    
+##### 1、查看当前用户拥有的角色权限信息：select * from role_sys_privs;
 ##### 2、查看当前用户的详细信息：select * from user_users;
 ##### 3、查看当前用户的角色信息：select * from user_role_privs;
 </code></pre>
