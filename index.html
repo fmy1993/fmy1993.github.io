@@ -325,10 +325,10 @@
 #### 将用于配置jdk的环境变量classpath改为class_path,或者直接删除。
 #### 2. 安装完成后使用b/s端登陆，使用普通的scott账号，显示*应用程序要求的数据库权限超出了您当前具有的权限*，
 #### 使用oracle的sqlplus工具使用管理员帐号登录
-#####    请输入用户名：as sysdba
-#####    请输入用户名：sys
-#####    输入口令：（输入你安装时设定的口令）    
-#####   grant SELECT_CATALOG_ROLE to user（scott），即可正常登陆。
+##### 请输入用户名：as sysdba
+##### 请输入用户名：sys
+##### 输入口令：（输入你安装时设定的口令）    
+##### grant SELECT_CATALOG_ROLE to user（scott），即可正常登陆。
 </code></pre><h4 id="PS-修改密码命令："><a href="#PS-修改密码命令：" class="headerlink" title="PS:修改密码命令："></a>PS:修改密码命令：</h4><pre><code>##### alter user scott account unlock;
 ##### alter user scott identified by abc123;
 </code></pre><h4 id="查看账户"><a href="#查看账户" class="headerlink" title="查看账户"></a>查看账户</h4><pre><code>##### 1、查看当前用户拥有的角色权限信息：select * from role_sys_privs;
