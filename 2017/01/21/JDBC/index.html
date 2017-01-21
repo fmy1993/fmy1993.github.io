@@ -84,19 +84,16 @@
 
 
 
-<meta name="description" content="利用excel批量生成sql语句使用excel公式：
-=”sql”(这样公式的结果就默认为字符串)，使用&amp;amp;&amp;amp;来连接字符串，&amp;amp;A2&amp;amp;就表示生成的字符串为左右两个字符串并且中间也加上了A2单元格的内容,鼠标移到公式所在单元格右下方变成1”+”号然后往下拉即可批量生成sql语句。">
+<meta name="description" content="在jdbc的code中发现Class.forName(“oracle.jdbc.driver.OracleDriver”); Class.ForName的用法Connection conn = DriverManager.getConnection(url, user, password); 直接使用了DriverManager类的静态方法参考http://blog.sina.com.cn/s/b">
 <meta property="og:type" content="article">
-<meta property="og:title" content="excel">
-<meta property="og:url" content="http://yoursite.com/2017/01/09/excel/index.html">
+<meta property="og:title" content="JDBC">
+<meta property="og:url" content="http://yoursite.com/2017/01/21/JDBC/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="利用excel批量生成sql语句使用excel公式：
-=”sql”(这样公式的结果就默认为字符串)，使用&amp;amp;&amp;amp;来连接字符串，&amp;amp;A2&amp;amp;就表示生成的字符串为左右两个字符串并且中间也加上了A2单元格的内容,鼠标移到公式所在单元格右下方变成1”+”号然后往下拉即可批量生成sql语句。">
-<meta property="og:updated_time" content="2017-01-09T14:04:17.255Z">
+<meta property="og:description" content="在jdbc的code中发现Class.forName(“oracle.jdbc.driver.OracleDriver”); Class.ForName的用法Connection conn = DriverManager.getConnection(url, user, password); 直接使用了DriverManager类的静态方法参考http://blog.sina.com.cn/s/b">
+<meta property="og:updated_time" content="2017-01-21T13:59:56.802Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="excel">
-<meta name="twitter:description" content="利用excel批量生成sql语句使用excel公式：
-=”sql”(这样公式的结果就默认为字符串)，使用&amp;amp;&amp;amp;来连接字符串，&amp;amp;A2&amp;amp;就表示生成的字符串为左右两个字符串并且中间也加上了A2单元格的内容,鼠标移到公式所在单元格右下方变成1”+”号然后往下拉即可批量生成sql语句。">
+<meta name="twitter:title" content="JDBC">
+<meta name="twitter:description" content="在jdbc的code中发现Class.forName(“oracle.jdbc.driver.OracleDriver”); Class.ForName的用法Connection conn = DriverManager.getConnection(url, user, password); 直接使用了DriverManager类的静态方法参考http://blog.sina.com.cn/s/b">
 
 
 
@@ -124,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/01/09/excel/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/01/21/JDBC/"/>
 
 
 
 
 
-  <title> excel | Hexo </title>
+  <title> JDBC | Hexo </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -243,7 +240,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/09/excel/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/21/JDBC/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="fmy1993">
@@ -267,7 +264,7 @@
             
             
               
-                excel
+                JDBC
               
             
           </h1>
@@ -282,8 +279,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-09T22:02:43+08:00">
-                2017-01-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-21T21:10:59+08:00">
+                2017-01-21
               </time>
             
 
@@ -318,10 +315,15 @@
       
 
       
-        <h4 id="利用excel批量生成sql语句"><a href="#利用excel批量生成sql语句" class="headerlink" title="利用excel批量生成sql语句"></a>利用excel批量生成sql语句</h4><h5 id="使用excel公式："><a href="#使用excel公式：" class="headerlink" title="使用excel公式："></a>使用excel公式：</h5><ol>
-<li>=”sql”(这样公式的结果就默认为字符串)，使用&amp;&amp;来连接字符串，<br>&amp;A2&amp;就表示生成的字符串为左右两个字符串并且中间也加上了A2单元格的内容,<br>鼠标移到公式所在单元格右下方变成1”+”号然后往下拉即可批量生成sql语句。</li>
-</ol>
-
+        <h5 id="在jdbc的code中发现"><a href="#在jdbc的code中发现" class="headerlink" title="在jdbc的code中发现"></a>在jdbc的code中发现</h5><p>Class.forName(“oracle.jdbc.driver.OracleDriver”); Class.ForName的用法<br>Connection conn = DriverManager.getConnection(url, user, password); 直接使用了DriverManager类的静态方法<br>参考<a href="http://blog.sina.com.cn/s/blog_6a61ea1c0101cytu.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_6a61ea1c0101cytu.html</a><br>综合个人理解，由于连接数据库的操作是非常频繁并且需要消耗相对比较大的性能，但是执行的部分又基本相同，<br>所以需要尽可能的减少一些开销。<br>这里采取的方法是：<br>1.将重复的逻辑写到静态代码块（静态方法），在编译生成.class文件时就会自动执行，并且只需执行一次。<br>2.直接执行DriverManager类的静态方法getConnection。</p>
+<pre><code>from javadoc: 
+    static Connection    getConnection(String url, String user, String password) 
+    Attempts to establish a connection to the given database URL.
+</code></pre><h5 id="对类而言就是是否加载，对实例而言就是是否实例化。"><a href="#对类而言就是是否加载，对实例而言就是是否实例化。" class="headerlink" title="对类而言就是是否加载，对实例而言就是是否实例化。"></a>对类而言就是是否加载，对实例而言就是是否实例化。</h5><h5 id="PS-同一个java的文件可能成生多个-class文件"><a href="#PS-同一个java的文件可能成生多个-class文件" class="headerlink" title="PS:同一个java的文件可能成生多个.class文件"></a>PS:同一个java的文件可能成生多个.class文件</h5><pre><code>内部类：
+http://8796412.blog.51cto.com/8786412/1391505
+内部类的class文件命名是：主类＋$＋内部类名
+匿名类的class文件命名是：主类＋$＋(1,2,3....)
+</code></pre>
       
     </div>
 
@@ -347,8 +349,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/08/oracle/" rel="next" title="oracle">
-                <i class="fa fa-chevron-left"></i> oracle
+              <a href="/2017/01/21/code中一些列与数据库有关的名词/" rel="next" title="code中一些列与数据库有关的名词">
+                <i class="fa fa-chevron-left"></i> code中一些列与数据库有关的名词
               </a>
             
           </div>
@@ -356,10 +358,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/09/Database/" rel="prev" title="Database">
-                Database <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -468,7 +466,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#利用excel批量生成sql语句"><span class="nav-number">1.</span> <span class="nav-text">利用excel批量生成sql语句</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用excel公式："><span class="nav-number">1.1.</span> <span class="nav-text">使用excel公式：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#在jdbc的code中发现"><span class="nav-number">1.</span> <span class="nav-text">在jdbc的code中发现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对类而言就是是否加载，对实例而言就是是否实例化。"><span class="nav-number">2.</span> <span class="nav-text">对类而言就是是否加载，对实例而言就是是否实例化。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PS-同一个java的文件可能成生多个-class文件"><span class="nav-number">3.</span> <span class="nav-text">PS:同一个java的文件可能成生多个.class文件</span></a></li></ol></div>
             
 
           </div>
