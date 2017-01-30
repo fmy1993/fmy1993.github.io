@@ -91,7 +91,7 @@ DAO (DATA ACCESS OBJECTS) 对象的数据访问接口
 ADO是基于全新的OLE DB技术而设计的.是一种基于应用程序层的数据访问接口.它是DAO/RDO的后继产物. 
 DAO是VB最先采用的面向对象的数据访问接口,通过DAO访问MICROS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="code中一些列与数据库有关的名词">
+<meta property="og:title" content="Entity类以及一些用code操作数据库有关的名词">
 <meta property="og:url" content="http://yoursite.com/2017/01/21/code中一些列与数据库有关的名词/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="ADO(ACTIVEX DATA OBJECTS)应用层的数据访问接口 
@@ -100,9 +100,9 @@ OLE DB 系统级数据访问接口
 DAO (DATA ACCESS OBJECTS) 对象的数据访问接口 
 ADO是基于全新的OLE DB技术而设计的.是一种基于应用程序层的数据访问接口.它是DAO/RDO的后继产物. 
 DAO是VB最先采用的面向对象的数据访问接口,通过DAO访问MICROS">
-<meta property="og:updated_time" content="2017-01-21T13:20:42.852Z">
+<meta property="og:updated_time" content="2017-01-25T13:35:27.377Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="code中一些列与数据库有关的名词">
+<meta name="twitter:title" content="Entity类以及一些用code操作数据库有关的名词">
 <meta name="twitter:description" content="ADO(ACTIVEX DATA OBJECTS)应用层的数据访问接口 
 ODBC 数据库驱动接口 
 OLE DB 系统级数据访问接口 
@@ -142,7 +142,7 @@ DAO是VB最先采用的面向对象的数据访问接口,通过DAO访问MICROS">
 
 
 
-  <title> code中一些列与数据库有关的名词 | Hexo </title>
+  <title> Entity类以及一些用code操作数据库有关的名词 | Hexo </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -279,7 +279,7 @@ DAO是VB最先采用的面向对象的数据访问接口,通过DAO访问MICROS">
             
             
               
-                code中一些列与数据库有关的名词
+                Entity类以及一些用code操作数据库有关的名词
               
             
           </h1>
@@ -344,7 +344,13 @@ DAO是VB最先采用的面向对象的数据访问接口,通过DAO访问MICROS">
 <li>odbc/jdbc连接数据库，得到一个类似db的实例。</li>
 <li>使用上述实例通过特定api（ado/dao,….）配合sql语句来实现对数据库的CRUD。</li>
 </ol>
+<h6 id="entity类创建用来对应数据库中的某张表（1vs1）-一般建立为final类（表结构没有继承关系），属性对应字段，实现get-set方法。"><a href="#entity类创建用来对应数据库中的某张表（1vs1）-一般建立为final类（表结构没有继承关系），属性对应字段，实现get-set方法。" class="headerlink" title="entity类创建用来对应数据库中的某张表（1vs1）,一般建立为final类（表结构没有继承关系），属性对应字段，实现get/set方法。"></a>entity类创建用来对应数据库中的某张表（1vs1）,一般建立为final类（表结构没有继承关系），属性对应字段，实现get/set方法。</h6><p>参考：<a href="http://blog.csdn.net/smxjant/article/details/52583124" target="_blank" rel="external">http://blog.csdn.net/smxjant/article/details/52583124</a><br>      O/R Mapping:<br>      <a href="http://www.cnblogs.com/teddyma/archive/2010/08/01/1789714.html" target="_blank" rel="external">http://www.cnblogs.com/teddyma/archive/2010/08/01/1789714.html</a><br>      简单映射  1. Class &lt;-&gt; Table  一个Class一般可以映射为一个Table，一个Class的实例对应Table的一行数据。但是，一个Table中的每行数据，一般都需要有一个主键来唯一标识这行数据，而一个Class的每个实例，则不一定需要一个唯一标识。  </p>
+<pre><code>            2. Property &lt;-&gt; Field  一个Class的Property一般可以直接映射为Table的一个Field。但是，他们的数据类型不一定直接匹配。如果他们代表的数据类型的语义上可转换，则Field的类型，应大于等于Property的数据类型。如果他们代表的类型语义上不可转换，则需要在应用程序层面，进行自定义的转换。
 
+PS:final类的好处：
+    1.不能被继承或者改变。
+    2.线程安全
+</code></pre>
       
     </div>
 
@@ -452,7 +458,7 @@ DAO是VB最先采用的面向对象的数据访问接口,通过DAO访问MICROS">
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -491,7 +497,7 @@ DAO是VB最先采用的面向对象的数据访问接口,通过DAO访问MICROS">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#简而言之，就是用来实现一些特定功能的api"><span class="nav-number">1.</span> <span class="nav-text">简而言之，就是用来实现一些特定功能的api.</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#简而言之，就是用来实现一些特定功能的api"><span class="nav-number">1.</span> <span class="nav-text">简而言之，就是用来实现一些特定功能的api.</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#entity类创建用来对应数据库中的某张表（1vs1）-一般建立为final类（表结构没有继承关系），属性对应字段，实现get-set方法。"><span class="nav-number">2.</span> <span class="nav-text">entity类创建用来对应数据库中的某张表（1vs1）,一般建立为final类（表结构没有继承关系），属性对应字段，实现get/set方法。</span></a></li></ol></div>
             
 
           </div>
