@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/01/21/JDBC/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="在jdbc的典型code中发现Class.forName(“oracle.jdbc.driver.OracleDriver”); Class.ForName的用法Connection conn = DriverManager.getConnection(url, user, password); 直接使用了DriverManager类的静态方法参考http://blog.sina.com.cn/s">
-<meta property="og:updated_time" content="2017-01-30T09:04:10.878Z">
+<meta property="og:updated_time" content="2017-02-02T00:46:47.911Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JDBC">
 <meta name="twitter:description" content="在jdbc的典型code中发现Class.forName(“oracle.jdbc.driver.OracleDriver”); Class.ForName的用法Connection conn = DriverManager.getConnection(url, user, password); 直接使用了DriverManager类的静态方法参考http://blog.sina.com.cn/s">
@@ -325,6 +325,16 @@ http://8796412.blog.51cto.com/8786412/1391505
 匿名类的class文件命名是：主类＋$＋(1,2,3....)
 </code></pre><h4 id="进一步的发展：使用数据库连接池。"><a href="#进一步的发展：使用数据库连接池。" class="headerlink" title="进一步的发展：使用数据库连接池。"></a>进一步的发展：使用数据库连接池。</h4><pre><code>http://blog.csdn.net/believejava/article/details/37815023
 </code></pre><h5 id="线程池和连接池"><a href="#线程池和连接池" class="headerlink" title="线程池和连接池"></a>线程池和连接池</h5><pre><code>http://blog.csdn.net/u014774781/article/details/48296943
+</code></pre><p>PS: 线程池:<br>其实线程池的原理很简单，类似于操作系统中的缓冲区的概念，它的流程如下：先启动若干数量的线程，并让这些线程都处于睡眠状态，当客户端有一个新请求时，就会唤醒线程池中的某一个睡眠线程，让它来处理客户端的这个请求，当处理完这个请求后，线程又处于睡眠状态。<br>可能你也许会问：为什么要搞得这么麻烦，如果每当客户端有新的请求时，我就创建一个新的线程不就完了？这也许是个很好的方法，因为它能使得你编写代码相对容易一些，但你却忽略了一个重要的问题??性能！一个省级数据大集中的银行网络中心，高峰期每秒的客户端请求并发数超过100，如果为每个客户端请求创建一个新线程的话，那耗费的CPU时间和内存将是惊人的，如果采用一个拥有200个线程的线程池，那将会节约大量的的系统资源，使得更多的CPU时间和内存用来处理实际的商业应用，而不是频繁的线程创建与销毁。</p>
+<pre><code>连接池: 
+</code></pre><p>数据库连接是一种关键的有限的昂贵的资源，这一点在多用户的网页应用程序中体现得尤为突出。<br>一个数据库连接对象均对应一个物理数据库连接，每次操作都打开一个物理连接，使用完都关闭连接，这样造成系统的 性能低下。 数据库连接池的解决方案是在应用程序启动时建立足够的数据库连接，并讲这些连接组成一个连接池(简单说：在一个“池”里放了好多半成品的数据库联接对象)，由应用程序动态地对池中的连接进行申请、使用和释放。对于多于连接池中连接数的并发请求，应该在请求队列中排队等待。并且应用程序可以根据池中连接的使用率，动态增加或减少池中的连接数。<br>连接池技术尽可能多地重用了消耗内存地资源，大大节省了内存，提高了服务器地服务效率，能够支持更多的客户服务。通过使用连接池，将大大提高程序运行效率，同时，我们可以通过其自身的管理机制来监视数据库连接的数量、使用情况等。<br>1) 最小连接数是连接池一直保持的数据库连接，所以如果应用程序对数据库连接的使用量不大，将会有大量的数据库连接资源被浪费；<br>2) 最大连接数是连接池能申请的最大连接数，如果数据库连接请求超过此数，后面的数据库连接请求将被加入到等待队列中，这会影响之后的数据库操作。<br>来源：<a href="http://bepatient.iteye.com/blog/688353" target="_blank" rel="external">http://bepatient.iteye.com/blog/688353</a><br>个人认为这2者最直接的区别就是一个是线程缓冲区，一个是数据库连接的缓冲区，用的地方不一样。</p>
+<h4 id="关于jdbc中connection对象在高并发下的处理："><a href="#关于jdbc中connection对象在高并发下的处理：" class="headerlink" title="关于jdbc中connection对象在高并发下的处理："></a>关于jdbc中connection对象在高并发下的处理：</h4><pre><code>http://bbs.csdn.net/topics/290010603
+http://bbs.csdn.net/topics/340259805 在并发下设置静态connection变量报错。进而在高并发下由于连接池中的connection对象数量不够，
+所以就需要使用负载均衡（分布式），集群
+http://bbs.csdn.net/topics/300050166 设置connection对象为成员变量，在并发下报错。
+
+http://bbs.csdn.net/topics/350052222
+最好使用经典的jdbc模式,将相关的参数设置为局部变量。
 </code></pre>
       
     </div>
@@ -472,7 +482,7 @@ http://8796412.blog.51cto.com/8786412/1391505
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#在jdbc的典型code中发现"><span class="nav-number">1.</span> <span class="nav-text">在jdbc的典型code中发现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对类而言就是是否加载，对实例而言就是是否实例化。"><span class="nav-number">2.</span> <span class="nav-text">对类而言就是是否加载，对实例而言就是是否实例化。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PS-同一个java的文件可能成生多个-class文件"><span class="nav-number">3.</span> <span class="nav-text">PS:同一个java的文件可能成生多个.class文件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进一步的发展：使用数据库连接池。"><span class="nav-number"></span> <span class="nav-text">进一步的发展：使用数据库连接池。</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#线程池和连接池"><span class="nav-number">1.</span> <span class="nav-text">线程池和连接池</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#在jdbc的典型code中发现"><span class="nav-number">1.</span> <span class="nav-text">在jdbc的典型code中发现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对类而言就是是否加载，对实例而言就是是否实例化。"><span class="nav-number">2.</span> <span class="nav-text">对类而言就是是否加载，对实例而言就是是否实例化。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PS-同一个java的文件可能成生多个-class文件"><span class="nav-number">3.</span> <span class="nav-text">PS:同一个java的文件可能成生多个.class文件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进一步的发展：使用数据库连接池。"><span class="nav-number"></span> <span class="nav-text">进一步的发展：使用数据库连接池。</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#线程池和连接池"><span class="nav-number">1.</span> <span class="nav-text">线程池和连接池</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于jdbc中connection对象在高并发下的处理："><span class="nav-number"></span> <span class="nav-text">关于jdbc中connection对象在高并发下的处理：</span></a></div>
             
 
           </div>
