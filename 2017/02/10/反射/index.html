@@ -1,0 +1,691 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="java class的生命周期我们平时所说的类class(小写表示)容易与java.Lang.Class的Class(大写表示)产生混淆.关于java.lang.Class的理解details:在一个运行的程序中，会有许多类和接口存在。我们就用java.lang.Class这个类来表示对这些类和接口的抽象，而java.lang.Class类的每个实例则代表运行中的一个类。例如，运行的程序有A、B、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="反射">
+<meta property="og:url" content="http://yoursite.com/2017/02/10/反射/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="java class的生命周期我们平时所说的类class(小写表示)容易与java.Lang.Class的Class(大写表示)产生混淆.关于java.lang.Class的理解details:在一个运行的程序中，会有许多类和接口存在。我们就用java.lang.Class这个类来表示对这些类和接口的抽象，而java.lang.Class类的每个实例则代表运行中的一个类。例如，运行的程序有A、B、">
+<meta property="og:updated_time" content="2017-02-09T23:28:26.382Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="反射">
+<meta name="twitter:description" content="java class的生命周期我们平时所说的类class(小写表示)容易与java.Lang.Class的Class(大写表示)产生混淆.关于java.lang.Class的理解details:在一个运行的程序中，会有许多类和接口存在。我们就用java.lang.Class这个类来表示对这些类和接口的抽象，而java.lang.Class类的每个实例则代表运行中的一个类。例如，运行的程序有A、B、">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/02/10/反射/"/>
+
+
+
+
+
+  <title> 反射 | Hexo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hexo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/10/反射/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="fmy1993">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                反射
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-10T07:25:50+08:00">
+                2017-02-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="java-class的生命周期"><a href="#java-class的生命周期" class="headerlink" title="java class的生命周期"></a>java class的生命周期</h4><h5 id="我们平时所说的类class-小写表示-容易与java-Lang-Class的Class-大写表示-产生混淆"><a href="#我们平时所说的类class-小写表示-容易与java-Lang-Class的Class-大写表示-产生混淆" class="headerlink" title="我们平时所说的类class(小写表示)容易与java.Lang.Class的Class(大写表示)产生混淆."></a>我们平时所说的类class(小写表示)容易与java.Lang.Class的Class(大写表示)产生混淆.</h5><h5 id="关于java-lang-Class的理解"><a href="#关于java-lang-Class的理解" class="headerlink" title="关于java.lang.Class的理解"></a>关于java.lang.Class的理解</h5><h6 id="details-在一个运行的程序中，会有许多类和接口存在。我们就用java-lang-Class这个类来表示对这些类和接口的抽象，"><a href="#details-在一个运行的程序中，会有许多类和接口存在。我们就用java-lang-Class这个类来表示对这些类和接口的抽象，" class="headerlink" title="details:在一个运行的程序中，会有许多类和接口存在。我们就用java.lang.Class这个类来表示对这些类和接口的抽象，"></a>details:在一个运行的程序中，会有许多类和接口存在。我们就用java.lang.Class这个类来表示对这些类和接口的抽象，</h6><p>而java.lang.Class类的每个实例则代表运行中的一个类。<br>例如，运行的程序有A、B、C三个类，那么Class类就是对A、B、C三个类的抽象。<br>所谓抽象，就是提取这些类的一些共同特征，比如说这些类都有类名，都有对应的hashcode，可以判断类型属于class、interface、enum还是</p>
+<p>annotation。<br>这些可以封装成Class类的域，另外可以定义一些方法，比如获取某个方法、获取类型名等等。这样就封装了一个表示类型(type)的类。<br>参考:<a href="https://www.zhihu.com/question/30301819" target="_blank" rel="external">https://www.zhihu.com/question/30301819</a>         <a href="http://blog.csdn.net/bingduanlbd/article/details/8424243" target="_blank" rel="external">http://blog.csdn.net/bingduanlbd/article/details/8424243</a></p>
+<h5 id="广义上的java的类从产生到使用需要经过初始化和实例化两个步骤"><a href="#广义上的java的类从产生到使用需要经过初始化和实例化两个步骤" class="headerlink" title="广义上的java的类从产生到使用需要经过初始化和实例化两个步骤."></a>广义上的java的类从产生到使用需要经过初始化和实例化两个步骤.</h5><p>class的生命周期主要存在于初始化部分.<br>参考:<a href="http://www.yanwushu.com/post/54.html" target="_blank" rel="external">http://www.yanwushu.com/post/54.html</a></p>
+<h6 id="在一个类编译完成之后，下一步就需要开始使用类，如果要使用一个类，肯定离不开JVM。"><a href="#在一个类编译完成之后，下一步就需要开始使用类，如果要使用一个类，肯定离不开JVM。" class="headerlink" title="在一个类编译完成之后，下一步就需要开始使用类，如果要使用一个类，肯定离不开JVM。"></a>在一个类编译完成之后，下一步就需要开始使用类，如果要使用一个类，肯定离不开JVM。</h6><p>####### 类的生命周期从加载、连接和初始化开始。并且严格按照如下步骤进行：</p>
+<ol>
+<li>加载：查找，并且加载类的二进制数据<br> 类的装载是通过类加载器完成的，加载器将.class文件的二进制文件装入JVM的方法区，并且在堆区创建描述这个类的java.lang.Class</li>
+</ol>
+<p>对象，用来封装数据。<br>    但是同一个类只会被类装载器装载一次。<br>    类加载器  sun.misc.Launcher$AppClassLoader</p>
+<pre><code>其实在java中有三种类类加载器。
+
+1）Bootstrap ClassLoader 此加载器采用c++编写，一般开发中很少见。
+
+2）Extension ClassLoader 用来进行扩展类的加载，一般对应的是jre\lib\ext目录中的类
+
+3）AppClassLoader 加载classpath指定的类，是最常用的加载器。同时也是java中默认的加载器。
+</code></pre><ol>
+<li><p>连接(连接就是把二进制数据组装为可以运行的状态。)</p>
+<ol>
+<li><p>验证：确保类被正确加载</p>
+</li>
+<li><p>准备：为类的静态变量分配内存，并且初始化为默认值</p>
+</li>
+<li><p>解析：把类中的符号引用转化为直接引用(解析指的是转换常量池中的代码作为直接引用的过程，直到所有的符号引用都可以被运行</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>程序使用（建立完整的对应关系）)</p>
+<ol>
+<li>初始化：为类的静态变量赋予正确的初始值。</li>
+</ol>
+<p>####### 特殊的Class类没有公开的构造函数,获取Class实例需要通过特殊的方式.</p>
+<pre><code>1.   ClassName.class()
+    当Java虚拟机载入一个类的时候，它就会自动创建一个Class类的实例来表示这个类。例如，虚拟机载入Car这个来的时候，它    
+
+就会创建    一个Class类的实例。然后可以通过以下方法获得这个Class对象：
+    java.lang.Class classObj = ClassName.class;
+2. 可以通过调用类加载器（ClassLoader）的defineClass()方法来得到一个实例。这个方法接受一个byte数组，载入这个byte数组构    
+
+成的class类，同时实例化一个Class对象。(classloader处理的是二进制数据&lt;字节数组&gt;)
+3.    ClassName.getClass()forName(ClassName)
+    1静态方法forName:
+    public  static Class&lt;?&gt; forName(String className)
+
+                    throws ClassNotFoundException{
+
+            returnforName0(className,true, ClassLoader.getCallerClassLoader());
+
+    }
+    根据给定的类名参数className,查找与className相对应的Class实例，然后加载、连接该实例对象，之后返回这个Class实例
+</code></pre><p>。<br>        2.forName方法重载：<br>        public  static Class&lt;?&gt; forName(String name, boolean initialize,ClassLoaderloader)<br>            这个forName重载方法中多了两个方法参数，其中initialize这个boolean类型指定是否要初始化对应的Class实例，            loader指</p>
+<pre><code>定加载Class实例的加载器。留意这个方法可能抛出的异常还是比较多的，比如连接失败、找不到对应的类等等。            eg:classloader例
+
+    子:Bootstrap.&lt;判定条件为classloader为null&gt;
+3.newInstance()方法：
+    public T newInstance()          // T是个泛型参数，是Class实例所表示的Java类
+    这是一个实例方法，必须由Class类的实例对象调用。例如，有一个代表java.lang.Thread类的Class实例对象objec1，也就
+    是说，泛型参数T此时就是Thread，object1这个实例代表Thread这个类。
+    newinstance方法执行时类已经被加载，连接了。 得到的是java.lang.Class的对象
+    使用这种方式得到类再通过反射执行相应的方法或者得到对应的值,通过定义接口,使用工厂设计模式,配合多态,使程序的灵活
+    性大大提高.
+    Ps:可以使用在工厂设计模式中，动态的加载实现了相同接口的类,Spring的ioc.
+    Ps:Constructor&lt;?&gt; constructor = clazz.getConstructor(new Class[]{String.class, Integer.class});
+    PersonBean person = (PersonBean) constructor.newInstance(new Object[]{&quot;SunnyMarkLiu&quot;, 20});
+</code></pre><h6 id="java反射的api"><a href="#java反射的api" class="headerlink" title="java反射的api:"></a>java反射的api:</h6><pre><code>1.Method中invoke（Object obj,Object...args）第一个参数为类的实例，第二个参数为相应函数中的参数.
+</code></pre><hr>
+<h2 id="http-www-cnblogs-com-jimxz-p-3974939-html-关于class加载更详细的一篇，非常详细的"><a href="#http-www-cnblogs-com-jimxz-p-3974939-html-关于class加载更详细的一篇，非常详细的" class="headerlink" title="http://www.cnblogs.com/jimxz/p/3974939.html       关于class加载更详细的一篇，非常详细的"></a><a href="http://www.cnblogs.com/jimxz/p/3974939.html" target="_blank" rel="external">http://www.cnblogs.com/jimxz/p/3974939.html</a>       关于class加载更详细的一篇，非常详细的</h2><pre><code>Class.newInstance() 只能够调用无参的构造函数，即默认的构造函数；
+Constructor.newInstance() 可以根据传入的参数，调用任意构造构造函数。
+
+Class.newInstance() 抛出所有由被调用构造函数抛出的异常。
+
+Class.newInstance() 要求被调用的构造函数是可见的，也即必须是public类型的; 
+Constructor.newInstance() 在特定的情况下，可以调用私有的构造函数。
+PS:单例模式中，将构造函数私有化，可以保证只得到一个实例
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/10/反射资料/" rel="next" title="反射资料">
+                <i class="fa fa-chevron-left"></i> 反射资料
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="fmy1993" />
+          <p class="site-author-name" itemprop="name">fmy1993</p>
+          <p class="site-description motion-element" itemprop="description">希望自己能够一点一点的成长。</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#java-class的生命周期"><span class="nav-number">1.</span> <span class="nav-text">java class的生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#我们平时所说的类class-小写表示-容易与java-Lang-Class的Class-大写表示-产生混淆"><span class="nav-number">1.1.</span> <span class="nav-text">我们平时所说的类class(小写表示)容易与java.Lang.Class的Class(大写表示)产生混淆.</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关于java-lang-Class的理解"><span class="nav-number">1.2.</span> <span class="nav-text">关于java.lang.Class的理解</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#details-在一个运行的程序中，会有许多类和接口存在。我们就用java-lang-Class这个类来表示对这些类和接口的抽象，"><span class="nav-number">1.2.1.</span> <span class="nav-text">details:在一个运行的程序中，会有许多类和接口存在。我们就用java.lang.Class这个类来表示对这些类和接口的抽象，</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#广义上的java的类从产生到使用需要经过初始化和实例化两个步骤"><span class="nav-number">1.3.</span> <span class="nav-text">广义上的java的类从产生到使用需要经过初始化和实例化两个步骤.</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#在一个类编译完成之后，下一步就需要开始使用类，如果要使用一个类，肯定离不开JVM。"><span class="nav-number">1.3.1.</span> <span class="nav-text">在一个类编译完成之后，下一步就需要开始使用类，如果要使用一个类，肯定离不开JVM。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#java反射的api"><span class="nav-number">1.3.2.</span> <span class="nav-text">java反射的api:</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http-www-cnblogs-com-jimxz-p-3974939-html-关于class加载更详细的一篇，非常详细的"><span class="nav-number"></span> <span class="nav-text">http://www.cnblogs.com/jimxz/p/3974939.html       关于class加载更详细的一篇，非常详细的</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">fmy1993</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
