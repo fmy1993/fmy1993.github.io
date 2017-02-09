@@ -241,6 +241,153 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/10/反射资料/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="fmy1993">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/10/反射资料/" itemprop="url">
+                  反射资料
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-10T07:00:28+08:00">
+                2017-02-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="查询反射时搜索的一些资料，作为备份。"><a href="#查询反射时搜索的一些资料，作为备份。" class="headerlink" title="查询反射时搜索的一些资料，作为备份。"></a>查询反射时搜索的一些资料，作为备份。</h2><p><a href="http://stackoverflow.com/questions/1215881/the-difference-between-classes-objects-and-instances" target="_blank" rel="external">http://stackoverflow.com/questions/1215881/the-difference-between-classes-objects-and-instances</a></p>
+<h2 id="ps-JLS-Java-Language-Specification-Java语言规范"><a href="#ps-JLS-Java-Language-Specification-Java语言规范" class="headerlink" title="ps: JLS Java Language Specification Java语言规范"></a>ps: JLS Java Language Specification Java语言规范</h2><p>Java (and any other programming language) is modelled in terms of types and values. At the theoretical level, a value is a representation for some quantum of information, and a type is a set of values. When we say value X is an instance of type Y, we are simply saying that X is a member of the set of values that is the type Y.</p>
+<p>So that’s what the term instance really means: it describes a relationship not a thing.</p>
+<p>The type system of the Java programming language supports two kinds of types, primitive types and reference types. The reference types are further divided into the Classes and array types. A Java Object is (according to the JLS) an instance of a reference type; i.e. either an array or an instance of a Class.</p>
+<p>That’s the type theoretic view. </p>
+<h2 id="In-practice-most-Java-developers-treat-the-words-“instance”-and-“object”-as-synonyms-And-that-includes-me-then-I’m-trying-to-explain-something-quickly-And-most-developers-use-“value”-rather-than-“instance”-to-refer-to-an-instance-of-a-primitive-type"><a href="#In-practice-most-Java-developers-treat-the-words-“instance”-and-“object”-as-synonyms-And-that-includes-me-then-I’m-trying-to-explain-something-quickly-And-most-developers-use-“value”-rather-than-“instance”-to-refer-to-an-instance-of-a-primitive-type" class="headerlink" title="In practice, most Java developers treat the words “instance” and “object” as synonyms. (And that includes me then I’m trying to explain something quickly.) And most developers use “value” rather than “instance” to refer to an instance of a primitive type."></a>In practice, most Java developers treat the words “instance” and “object” as synonyms. (And that includes me then I’m trying to explain something quickly.) And most developers use “value” rather than “instance” to refer to an instance of a primitive type.</h2><p><a href="http://stackoverflow.com/questions/3323330/difference-between-object-and-instance?noredirect=1&amp;lq=1" target="_blank" rel="external">http://stackoverflow.com/questions/3323330/difference-between-object-and-instance?noredirect=1&amp;lq=1</a></p>
+<p>The truth is that object oriented programming often creates confusion by creating a disconnect between the philosophical side of development and the actual mechanical workings of the computer. I’ll try to contrast the two for you:</p>
+<p>The basic concept of OOP is this: Class &gt;&gt; Object &gt;&gt; Instance.</p>
+<p>The class = the blue print. The Object is an actual thing that is built based on the ‘blue print’ (like the house). An instance is a virtual copy (but not a real copy) of the object. </p>
+<p>The more technical explanation of an ‘instance’ is that it is a ‘memory reference’ or a reference variable. This means that an ‘instance’ is a variable in memory that only has a memory address of an object in it. The object it addresses is the same object the instance is said to be ‘an instance of’. If you have many instances of an object, you really just have many variables in difference places in your memory that all have the same exact memory address in it - which are all the address of the same exact object. You can’t ever ‘change’ an instance, although it looks like you can in your code. What you really do when you ‘change’ an instance is you change the original object directly. Electronically, the processor goes through one extra place in memory (the reference variable/instance) before it changes the data of the original object. </p>
+<p>The process is: processor &gt;&gt; memory location of instance &gt;&gt; memory location of original object.</p>
+<p>Note that it doesn’t matter which instance you use - the end result will always be the same. ALL the instances will continue to maintain the same exact information in their memory locations - the object’s memory address - and only the object will change.</p>
+<p>The relationship between class and object is a bit more confusing, although philosophically its the easiest to understand (blue print &gt;&gt; house). If the object is actual data that is held somewhere in memory, what is ‘class’? It turns out that mechanically the object is an exact copy of the class. So the class is just another variable somewhere else in memory that holds the same exact information that the object does. Note the difference between the relationships:</p>
+<h5 id="Object-is-a-copy-of-the-class-Instance-is-a-variable-that-holds-the-memory-address-of-the-object"><a href="#Object-is-a-copy-of-the-class-Instance-is-a-variable-that-holds-the-memory-address-of-the-object" class="headerlink" title="Object is a copy of the class. Instance is a variable that holds the memory address of the object."></a>Object is a copy of the class. Instance is a variable that holds the memory address of the object.</h5><h5 id="You-can-also-have-multiple-objects-of-the-same-class-and-then-multiple-instances-of-each-of-those-objects-In-these-cases-each-object’s-set-of-instances-are-equivalent-in-value-but-the-instances-between-objects-are-not-For-example"><a href="#You-can-also-have-multiple-objects-of-the-same-class-and-then-multiple-instances-of-each-of-those-objects-In-these-cases-each-object’s-set-of-instances-are-equivalent-in-value-but-the-instances-between-objects-are-not-For-example" class="headerlink" title="You can also have multiple objects of the same class and then multiple instances of each of those objects. In these cases, each object’s set of instances are equivalent in value, but the instances between objects are not. For example:"></a>You can also have multiple objects of the same class and then multiple instances of each of those objects. In these cases, each object’s set of instances are equivalent in value, but the instances between objects are not. For example:</h5><p>Let Class A From Class A let Object1, Object2, and Object3.</p>
+<p>//Object1 has the same exact value as object2 and object3, but are in different places in memory.</p>
+<p>from Object1&gt;&gt; let obj1_Instance1, obj1_Instace2 , obj1_Instance3</p>
+<p>//all of these instances are also equivalent in value and in different places in memory. Their values = Object1.MemoryAddress.</p>
+<p>etc.</p>
+<p>Things get messier when you start introducing types. Here’s an example using types from c#:</p>
+<p>//assume class Person exists Person john = new Person();</p>
+<p>Actually, this code is easier to analyze if you break it down into two parts:<br>Person john;<br>john = new Person();</p>
+<p>In technical speak, the first line ‘declares a variable of type Person. But what does that mean?? The general explanation is that I now have an empty variable that can only hold a Person object. But wait a minute - its an empty variable! There is nothing in that variables memory location. It turns out that ‘types’ are mechanically meaningless. Types were originally invented as a way to manage data and nothing else. Even when you declare primitive types such as int, str, chr (w/o initializing it), nothing happens within the computer. This weird syntactical aspect of programming is part of where people get the idea that classes are the blueprint of objects. OOP’s have gotten even more confusing with types with delegate types, event handlers, etc. I would try not focus on them too much and just remember that they are all a misnomer. Nothing changes with the variable until its either becomes an object or is set to a memory address of an object.</p>
+<p>The second line is also a bit confusing because it does two things at once:</p>
+<p>The right side “new Person()” is evaluated first. It creates a new copy of the Person class - that is, it creates a new object. </p>
+<p>The left side “john =”, is then evaluated after that. It turns john into a reference variable giving it the memory address of the object that was just created on the right side of the same line.</p>
+<p>If you want to become a good developer, its important to understand that no computer environment ever works based on philosophic ideals. Computers aren’t even that logical - they’re really just a big collection of wires that are glued together using basic boolean circuits (mostly NAND and OR).</p>
+<hr>
+<p><a href="https://www.zhihu.com/question/30301819" target="_blank" rel="external">https://www.zhihu.com/question/30301819</a></p>
+<h2 id="先有Class还是先有Object"><a href="#先有Class还是先有Object" class="headerlink" title="先有Class还是先有Object"></a>先有Class还是先有Object</h2><p><a href="https://www.quora.com/I-think-Class-is-the-collection-of-objects-and-Object-is-the-instance-of-class-Then-which-is-the-source" target="_blank" rel="external">https://www.quora.com/I-think-Class-is-the-collection-of-objects-and-Object-is-the-instance-of-class-Then-which-is-the-source</a></p>
+<h2 id="Please-note-that-in-Java-“Class”-and-“Object”-are-the-names-of-two-basic-classes-used-by-Java-“class”-and-“object”-are-words-from-general-OOPS-terminology-Confusing-the-two-could-lead-to-lots-of-confusion"><a href="#Please-note-that-in-Java-“Class”-and-“Object”-are-the-names-of-two-basic-classes-used-by-Java-“class”-and-“object”-are-words-from-general-OOPS-terminology-Confusing-the-two-could-lead-to-lots-of-confusion" class="headerlink" title="Please note that, in Java, “Class” and “Object” are the names of two basic classes used by Java.  “class” and “object” are words from general OOPS terminology.  Confusing the two could lead to lots of confusion!"></a>Please note that, in Java, “Class” and “Object” are the names of two basic classes used by Java.  “class” and “object” are words from general OOPS terminology.  Confusing the two could lead to lots of confusion!</h2><h2 id="java-lang-Class-isPrimitive-可以用来判定原始类型-值类型"><a href="#java-lang-Class-isPrimitive-可以用来判定原始类型-值类型" class="headerlink" title="java.lang.Class.isPrimitive() 可以用来判定原始类型(值类型)"></a>java.lang.Class.isPrimitive() 可以用来判定原始类型(值类型)</h2><h2 id="java-native方法-使用其他语言编写的java方法-相关-JNI"><a href="#java-native方法-使用其他语言编写的java方法-相关-JNI" class="headerlink" title="java native方法:使用其他语言编写的java方法. 相关:JNI."></a>java native方法:使用其他语言编写的java方法. 相关:JNI.</h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/30/分布式与集群/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1351,124 +1498,6 @@ PS:final类的好处：
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/02/markdown/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="fmy1993">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/02/markdown/" itemprop="url">
-                  markdown
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-02T16:42:52+08:00">
-                2017-01-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="1-在hexo中使用-可以区分六级的标题，但是之后要加一个空格，否则不识别。"><a href="#1-在hexo中使用-可以区分六级的标题，但是之后要加一个空格，否则不识别。" class="headerlink" title="1.在hexo中使用#可以区分六级的标题，但是之后要加一个空格，否则不识别。"></a>1.在hexo中使用#可以区分六级的标题，但是之后要加一个空格，否则不识别。</h5>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1516,7 +1545,7 @@ PS:final类的好处：
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
