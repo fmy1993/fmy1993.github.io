@@ -335,7 +335,13 @@ strref1==strref2(true) strref1.equals(strref2)  (true)  str1==str2(flase) str1.e
 <p><a href="https://randu.org/tutorials/threads/" target="_blank" rel="external">https://randu.org/tutorials/threads/</a>   <a href="https://stackoverflow.com/questions/1762418/what-resources-are-shared-between-threads?rq=1" target="_blank" rel="external">https://stackoverflow.com/questions/1762418/what-resources-are-shared-between-threads?rq=1</a>  thread share resource</p>
 <p><a href="https://stackoverflow.com/questions/3106452/how-do-servlets-work-instantiation-sessions-shared-variables-and-multithreadi?rq=1" target="_blank" rel="external">https://stackoverflow.com/questions/3106452/how-do-servlets-work-instantiation-sessions-shared-variables-and-multithreadi?rq=1</a> servlet thread</p>
 <h2 id="负载均衡-load-balance"><a href="#负载均衡-load-balance" class="headerlink" title="负载均衡(load balance)"></a>负载均衡(load balance)</h2><p><a href="https://www.cnblogs.com/danbing/p/7459224.html" target="_blank" rel="external">https://www.cnblogs.com/danbing/p/7459224.html</a></p>
-<p>tcp/ip build “socket”  (ip address/prot number)<br>DNS: a map table of domain name and ip address (in windows OS,we often call it hosts file)</p>
+<h5 id="tcp-ip-build-“socket”-ip-address-prot-number"><a href="#tcp-ip-build-“socket”-ip-address-prot-number" class="headerlink" title="tcp/ip build “socket”  (ip address/prot number)"></a>tcp/ip build “socket”  (ip address/prot number)</h5><h5 id="DNS-a-map-table-of-domain-name-and-ip-address-in-windows-OS-we-often-call-it-hosts-file"><a href="#DNS-a-map-table-of-domain-name-and-ip-address-in-windows-OS-we-often-call-it-hosts-file" class="headerlink" title="DNS: a map table of domain name and ip address (in windows OS,we often call it hosts file)"></a>DNS: a map table of domain name and ip address (in windows OS,we often call it hosts file)</h5><h4 id="three-times-handshake"><a href="#three-times-handshake" class="headerlink" title="three times handshake"></a>three times handshake</h4><pre><code>ip/port
+</code></pre><p>A&lt;————&gt;B<br>    SYN + A’s Initial sequence number –&gt;</p>
+<pre><code>ip/port
+</code></pre><p>A&lt;————&gt;B(receive A ISN?store as B’s ACK sequence number://to do)<br>    &lt;–SYN + B’s Initial sequence number </p>
+<pre><code>ip/port
+</code></pre><p>A&lt;————&gt;B(receive B ISN?store as A’s ACK sequence number://to do)</p>
+<p>note:Initial sequence number(ISN) 32 bits Unique ID   (in HTTP ,that mind will be expands to cookie session)</p>
 
           
         
